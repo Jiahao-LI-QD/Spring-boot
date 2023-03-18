@@ -1,0 +1,44 @@
+info:
+    app:
+        description: MasterSpringBoot
+        name: springBootMaster
+        version: 1.0.0
+        website: reflectoring.io
+    company:
+        name: homeStay
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: health, info, prometheus
+    info:
+        env:
+            enabled: true
+        java:
+            enabled: true
+server:
+    error:
+        include-binding-errors: always
+        include-message: always
+        include-stacktrace: never
+spring:
+    datasource:
+        driverClassName: org.h2.Driver
+        password: ''
+        url: jdbc:h2:mem:testdb
+        username: sa
+    h2:
+        console:
+            enabled: true
+            path: /h2
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        show-sql: true
+    main:
+        banner-mode: 'off'
+    sql:
+        init:
+            data-locations: classpath:data.sql
